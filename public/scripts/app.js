@@ -4,7 +4,7 @@
  * into functions and objects as needed.
  *
  */
- 
+console.log("Sanity Check: JS is working!");
 
 // hard-coded data
 var sampleAlbums = [{
