@@ -11,7 +11,6 @@ var app = express();
 // // body parser (middleware) config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // // serve static files in public
 app.use(express.static('public'));
 
