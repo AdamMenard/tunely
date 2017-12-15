@@ -1,17 +1,25 @@
+// models/album.js
+
+
 // require mongoose
+var mongoose = require("mongoose");
+var Song = require('./song');
+
+
 // set up shorthand Schema variable to stand in for mongoose.Schema
-var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// album schema
+//models/album.js
 var AlbumSchema = new Schema({
   artistName: String,
   name: String,
   releaseDate: String,
-  genres: [ String ]
+  genres: [ String ],
+  songs: Song.schema
 });
 
-// album model
-var Album = mongoose.model('Album', AlbumSchema);
 
+//create model
+var Album = mongoose.model('Album', AlbumSchema);
+//export model
 module.exports = Album;
