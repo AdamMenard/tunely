@@ -4,7 +4,7 @@
  * into functions and objects as needed.
  *
  */
- 
+
 
 // hard-coded data
 var sampleAlbums = [{
