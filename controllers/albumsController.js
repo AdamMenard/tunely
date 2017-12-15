@@ -61,7 +61,7 @@ function update(req, res) {
   // and send it back as JSON
 }
 
-// export
+// exports
 module.exports = {
   index: index,
   create: create,
