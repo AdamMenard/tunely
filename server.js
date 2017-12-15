@@ -1,7 +1,8 @@
 // requires express app
 var express = require('express');
-// var bodyParser = require('body-parser');
-// var db = require('./models');
+var bodyParser = require('body-parser');
+var db = require('./models');
+var controllers = require('./controllers');
 
 
 // creates express app
@@ -18,10 +19,16 @@ app.use(express.static('public'));
 //*** ROUTES ***
 //**************
 
+// get DATA from: tunely.controllers
+app.get('/api', controllers.api.index);
+
+
 // define 'views/index.html' route: localhost:3000/
 app.get('/', function (req, res) {
-  res.sendFile('index.html' , { root : __dirname});
+  res.sendFile('/views/index.html' , { root : __dirname});
 });
+
+
 
 
 
