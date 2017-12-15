@@ -2,6 +2,9 @@
 
 // require mongoose
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
+
+
 
 // song schema
 var SongSchema = new Schema({

@@ -1,5 +1,32 @@
 var db = require("./models");
 
+
+//SONG LIST VARIABLE
+var songsList = [{
+  name: 'Swamped',
+  trackNumber: 1
+}, {
+  name: "Heaven's a Lie",
+  trackNumber: 2
+}, {
+  name: 'Daylight Dancer',
+  trackNumber: 3
+}, {
+  name: 'Humane',
+  trackNumber: 4
+}, {
+  name: 'Self Deception',
+  trackNumber: 5
+}, {
+  name: 'Aeon',
+  trackNumber: 6
+}, {
+  name: 'Tight Rope',
+  trackNumber: 7
+}];
+
+
+//ALBUM LIST VARIABLE
 var albumsList = [{
   artistName: 'Nine Inch Nails',
   name: 'The Downward Spiral',
@@ -30,5 +57,7 @@ db.Album.remove({}, function(err, albums){
     console.log("all albums:", albums);
     console.log("created", albums.length, "albums");
     process.exit();
-  });
+  }); // end remove function
 });
+
+  db.Song.create(songsList);
