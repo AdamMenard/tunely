@@ -4,31 +4,9 @@
 
 // **   ALBUMS   **
 //******************
-var albums = [{
-  _id: 132,
-  artistName: 'Nine Inch Nails',
-  name: 'The Downward Spiral',
-  releaseDate: '1994, March 8',
-  genres: [ 'industrial', 'industrial metal' ]
-}, {
-  _id: 133,
-  artistName: 'Metallica',
-  name: 'Metallica',
-  releaseDate: '1991, August 12',
-  genres: [ 'heavy metal' ]
-}, {
-  _id: 134,
-  artistName: 'The Prodigy',
-  name: 'Music for the Jilted Generation',
-  releaseDate: '1994, July 4',
-  genres: [ 'electronica', 'breakbeat hardcore', 'rave', 'jungle' ]
-}, {
-  _id: 135,
-  artistName: 'Johnny Cash',
-  name: 'Unchained',
-  releaseDate: '1996, November 5',
-  genres: [ 'country', 'rock' ]
-}];
+// var albums = [{
+//      // data moved to seed.js
+// }];
 
 
 
@@ -37,8 +15,16 @@ var albums = [{
 
 // GET /api/albums
 function index(req, res) {
-  // send back all albums as JSON
-}
+    // get all albums from the database
+    db.Card.find({}, function(err, allAlbums) {
+      // add some error checking here
+      if (err) {
+        res.status(500).json({error: err.message});
+      }
+      // send back all albums as JSON
+      res.json(allAlbums);
+    });
+  }
 
 // POST /api/albums
 function create(req, res) {

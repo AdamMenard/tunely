@@ -29,6 +29,7 @@ app.get('/', function (req, res) {
 
 // get DATA from: tunely.controllers
 app.get('/api', controllers.api.index);
+app.get('/api', controllers.albums.index);
 
 
 
