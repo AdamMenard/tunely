@@ -86,4 +86,4 @@ function renderAlbum(album) {
   $('#albums').prepend(htmlToAppend);
 };
 
-}); // end document .ready function
+// }); // end document .ready function

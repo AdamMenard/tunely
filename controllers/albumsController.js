@@ -1,6 +1,6 @@
 // controllers/albumsController.js
 
-//*********************************
+var db = require('../models');
 
 // **   ALBUMS   **
 //******************
