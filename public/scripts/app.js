@@ -64,6 +64,8 @@ $(document).ready(function() {
       $('#songModal').modal();
   });
 
+  $('#saveSong').on('click', handleNewSongSubmit);
+});
 
 function handleSuccess (albums) {
   albums.forEach(function(album) {
@@ -142,3 +144,43 @@ function renderAlbum(album) {
   // render HTML template in the DOM
   $('#albums').prepend(albumHtml);
 }
+
+
+// handle for adding new song to corresponding album
+function handleNewSongSubmit(e) {
+  e.preventDefault();
+  console.log('in handleNewSongSubmit function');
+
+  var $modal = $('#songModal');
+  var $songNameField = $modal.find('#songName');
+  var $trackNumberField = $modal.find('#trackNumber');
+
+  // get album ID
+  var albumId = $modal.data('albumId');
+
+  // get data from modal fields
+  var postData = {
+    name: $songNameField.val(),
+    trackNumber: $trackNumberField.val()
+  };
+
+  // POST to SERVER
+  var songPostUrl = '/api/albums/'+ albumId + '/songs';
+  $.post(songPostUrl, postData, function(data) {
+    $modal.modal('hide');
+
+    $songNameField.val('');
+    $trackNumberField.val('');
+
+    var albumGetUrl = '/api/albums/' + albumId;
+    $.get(albumGetUrl, function(updatedAlbum) {
+      // remove current instance of album
+      $('[data-album-id=' + albumId + ']').remove();
+
+      // re-render album with new songs
+      renderAlbum(updatedAlbum);
+    });
+  }).fail(function(xhr, status, err) {
+    console.log('post to /api/albums/:albumId/songs resulted in error', err);
+  });
+};
