@@ -49,15 +49,23 @@ var albumsList = [{
   genres: [ 'country', 'rock' ]
 }];
 
+
+
+// CREATES ALBUMS WITH A 'SONGS' KEY THAT CONTAINS AN ARRAY OF SONGS
 db.Album.remove({}, function(err, albums){
-  // code in here runs after all albums are removed
-  db.Album.create(albumsList, function(err, albums){
-    // code in here runs after all albums are created
-    if (err) { return console.log('ERROR', err); }
-    console.log("all albums:", albums);
-    console.log("created", albums.length, "albums");
-    process.exit();
-  }); // end remove function
+ console.log('removed all albums');
+
+ albumsList.forEach(function (albumObj) {
+   var album = new db.Album(albumObj);
+   album.songs = songsList;
+   album.save(function(err, savedAlbum){
+     if (err) {
+       console.log(err);
+       return;
+     }
+     console.log('saved ', savedAlbum.name);
+   });
+ });
 });
 
   db.Song.create(songsList);

@@ -67,6 +67,10 @@ function handleError(err){
 
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
+var songs = album.songs;
+console.log(songs);
+songs.map()
+}
 
   // HTML template string for each album
   var albumHtml = `
@@ -99,6 +103,7 @@ function renderAlbum(album) {
                     <h4 class='inline-header'>Released date:</h4>
                     <span class='album-releaseDate'>${ album.releaseDate }</span>
                   </li>
+
                 </ul>
               </div>
 
